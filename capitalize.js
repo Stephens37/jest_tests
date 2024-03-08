@@ -1,9 +1,7 @@
-function capitalizeFirstLetter (str) {
+export function capitalizeLetter (str) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-module.exports = capitalizeFirstLetter
-
 const inputString = 'hello world'
-const capitalizedString = capitalizeFirstLetter(inputString)
+const capitalizedString = capitalizeLetter(inputString)
 console.log(capitalizedString) // Output: "Hello world"
