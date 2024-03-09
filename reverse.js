@@ -5,8 +5,10 @@ for (i less than str.length ++) {
 */
 
 export function reverse (str) {
-  for (let i = 0; i < str.length; i++) {
   let reverseString = ''
-  reverseString = reverseString + str.charAt(str.length - (1 + i))
+  for (let i = 0; i < str.length; i++) {
+    reverseString = reverseString + str.charAt(str.length - (1 + i))
   }
+  str = reverseString
+  return str
 }
