@@ -15,11 +15,10 @@
   function for condensing that array into new word
 */
 
-const regArr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-
-export function caesarCipher (shift, arr, sharr, word) {
-  (function () {
-    arr = regArr
+function caesarCipher (shift, word) {
+  const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  let sharr = []
+  const shiftArray = (function () {
     for (let i = 0; i < arr.length; i++) {
       let j = 0
       if (arr[shift] === 26) {
@@ -32,7 +31,7 @@ export function caesarCipher (shift, arr, sharr, word) {
 
   let letterArray = []
 
-  (function () {
+  const splitWord = (function () {
     word.toLowerCase()
     letterArray = word.split('')
     return letterArray
@@ -40,7 +39,7 @@ export function caesarCipher (shift, arr, sharr, word) {
 
   let cipherArray = []
 
-  (function () {
+  const cipherFunction = (function () {
     /* create for loop that loops over the length of the word array
     in this loop is another for loop that loops over the regular array
     when the index of the matching letter is found find the value of the corresponding index position in sharr
@@ -62,3 +61,5 @@ export function caesarCipher (shift, arr, sharr, word) {
   word = cipherArray.join
   return word
 }
+
+module.exports = caesarCipher
