@@ -36,9 +36,8 @@ function caesarCipher (shift, word) {
     letterArray = word.split('')
     return letterArray
   })()
-  return letterArray
 
-  /*let cipherArray = []
+  let cipherArray = []
 
   const cipherFunction = (function () {
     /* create for loop that loops over the length of the word array
@@ -52,17 +51,15 @@ function caesarCipher (shift, word) {
    after, find the value of the same index position in the shifted array
    push that value to the cipherarray
    */
-    /*for (let i = 0; i < letterArray.length; i++) {
-      let letterValue = letterArray[i++]
-      let regIndex = arr.indexOf(letterValue)
+    for (let i = 0; i <= letterArray.length; i++) {
+      let regIndex = arr.indexOf(letterArray[i])
       let shiftValue = sharr[regIndex]
       cipherArray.push(shiftValue)
     }
-    return cipherArray
-  })()*/
+  })()
 
-  /*word = cipherArray.join('')
-  return word*/
+  word = cipherArray.join('')
+  return word
 }
 
 module.exports = caesarCipher
