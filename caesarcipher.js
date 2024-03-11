@@ -21,10 +21,10 @@ function caesarCipher (shift, word) {
   const shiftArray = (function () {
     for (let i = 0; i < arr.length; i++) {
       let j = 0
-      if (arr[shift] === 26) {
-        sharr.push(arr[j++].value)
+      if (arr.indexOf(shift) === 26) {
+        sharr.push(arr[j++])
       } else {
-        sharr.push(arr[shift + i].value)
+        sharr.push(arr[shift + i])
       }
     }
   })()
@@ -36,8 +36,9 @@ function caesarCipher (shift, word) {
     letterArray = word.split('')
     return letterArray
   })()
+  return letterArray
 
-  let cipherArray = []
+  /*let cipherArray = []
 
   const cipherFunction = (function () {
     /* create for loop that loops over the length of the word array
@@ -46,20 +47,22 @@ function caesarCipher (shift, word) {
     push that value to a new array
     condense the array into a string
     */
-    for (let i = 0; i < letterArray.length; i++) {
-      let letterIndex = letterArray[i++]
-      for (let i = 0; i < arr.length; i++) {
-        let regIndex = arr[i++]
-        if (regIndex.value === letterIndex.value) {
-          cipherArray.push(sharr[regIndex].value)
-        }
-      }
+    /*
+   trying to find the index of the first letter in the regular array
+   after, find the value of the same index position in the shifted array
+   push that value to the cipherarray
+   */
+    /*for (let i = 0; i < letterArray.length; i++) {
+      let letterValue = letterArray[i++]
+      let regIndex = arr.indexOf(letterValue)
+      let shiftValue = sharr[regIndex]
+      cipherArray.push(shiftValue)
     }
     return cipherArray
-  })()
+  })()*/
 
-  word = cipherArray.join
-  return word
+  /*word = cipherArray.join('')
+  return word*/
 }
 
 module.exports = caesarCipher
