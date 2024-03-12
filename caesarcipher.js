@@ -17,14 +17,18 @@
 
 function caesarCipher (shift, word) {
   const arr = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  const capitalArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   let sharr = []
+  let capitalSharr = []
   const shiftArray = (function () {
     for (let i = 0; i < arr.length; i++) {
       let j = 0
-      if (arr.indexOf(shift) === 26) {
+      if (arr.indexOf(shift) === 26 && capitalArr.indexOf(shift) === 26) {
         sharr.push(arr[j++])
+        capitalSharr.push(capitalArr[j++])
       } else {
         sharr.push(arr[shift + i])
+        capitalSharr.push(capitalArr[shift + i])
       }
     }
   })()
@@ -32,7 +36,6 @@ function caesarCipher (shift, word) {
   let letterArray = []
 
   const splitWord = (function () {
-    word.toLowerCase()
     letterArray = word.split('')
     return letterArray
   })()
@@ -51,10 +54,18 @@ function caesarCipher (shift, word) {
    after, find the value of the same index position in the shifted array
    push that value to the cipherarray
    */
+   
     for (let i = 0; i <= letterArray.length; i++) {
-      let regIndex = arr.indexOf(letterArray[i])
-      let shiftValue = sharr[regIndex]
-      cipherArray.push(shiftValue)
+      if (sharr.indexOf(letterArray[i]) !== -1) {
+        let shiftValue = sharr[arr.indexOf(letterArray[i])]
+        cipherArray.push(shiftValue)
+      } else if (sharr.indexOf(letterArray[i]) === -1) {
+        let capitalShiftValue = capitalSharr[capitalArr.indexOf(letterArray[i])]
+        console.log(capitalShiftValue)
+        cipherArray.push(capitalShiftValue)
+      } else {
+        cipherArray.push(letterArray[i])
+      }
     }
   })()
 
