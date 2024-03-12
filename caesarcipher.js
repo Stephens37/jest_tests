@@ -20,16 +20,12 @@ function caesarCipher (shift, word) {
   const capitalArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   let sharr = []
   let capitalSharr = []
+
   const shiftArray = (function () {
     for (let i = 0; i < arr.length; i++) {
-      let j = 0
-      if (arr.indexOf(shift) === 26 && capitalArr.indexOf(shift) === 26) {
-        sharr.push(arr[j++])
-        capitalSharr.push(capitalArr[j++])
-      } else {
-        sharr.push(arr[shift + i])
-        capitalSharr.push(capitalArr[shift + i])
-      }
+      let shiftedIndex = (i + shift) % arr.length
+      sharr.push(arr[shiftedIndex])
+      capitalSharr.push(capitalArr[shiftedIndex])
     }
   })()
 
@@ -39,6 +35,8 @@ function caesarCipher (shift, word) {
     letterArray = word.split('')
     return letterArray
   })()
+
+  console.log(letterArray)
 
   let cipherArray = []
 
@@ -54,15 +52,17 @@ function caesarCipher (shift, word) {
    after, find the value of the same index position in the shifted array
    push that value to the cipherarray
    */
-   
+
     for (let i = 0; i <= letterArray.length; i++) {
-      if (sharr.indexOf(letterArray[i]) !== -1) {
-        let shiftValue = sharr[arr.indexOf(letterArray[i])]
-        cipherArray.push(shiftValue)
-      } else if (sharr.indexOf(letterArray[i]) === -1) {
-        let capitalShiftValue = capitalSharr[capitalArr.indexOf(letterArray[i])]
-        console.log(capitalShiftValue)
-        cipherArray.push(capitalShiftValue)
+      if (/[a-zA-Z]/.test(letterArray[i])) {
+        if (sharr.indexOf(letterArray[i]) !== -1) {
+          let shiftValue = sharr[arr.indexOf(letterArray[i])]
+          cipherArray.push(shiftValue)
+        } else if (sharr.indexOf(letterArray[i]) === -1) {
+          let capitalShiftValue = capitalSharr[capitalArr.indexOf(letterArray[i])]
+          console.log(capitalShiftValue)
+          cipherArray.push(capitalShiftValue)
+        }
       } else {
         cipherArray.push(letterArray[i])
       }
