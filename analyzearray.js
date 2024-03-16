@@ -4,47 +4,26 @@ min/max: perform a mergesort and take the numbers at beginning and end of the ar
 length: array.length
 */
 
-
 function analyzeArray (arr) {
-  let sum = arr[0]
-  function average () {
-    if (arr.length = 1) {
-      let arrAvg = sum / arr.length
-      return arrAvg
-    }
-    let num = arr
-    let i = 0
-    sum = average(num[i] + num[i + 1])
+  const arrAvg = (arr) => {
+    const sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+    const avg = sum / arr.length
+    return avg
   }
-  average()
-  function min () {
-    let minNum = 0
-    for (let i = 0; i < minNum; i++) {
-      for (let k = 0; k < arr.length; k++) {
-        let j = 0
-        if (j === arr.length && arr[j] !== minNum) {
-          minNum++
-          return
-        } else if (arr[j] === minNum) {
-          return minNum
-        } else if (arr[j] !== minNum) {
-          j++
-        }
-      }
-    }
-    return minNum
-  }
-  min()
+  // perhaps averageArr is the culprit?
+  const minNum = Math.min(...arr)
   const maxNum = Math.max(...arr)
-  const length = arr.length()
+  const arrLength = arr.length
 
-  const obj == {
-    average: arrAvg,
+  let obj = {
+    average: arrAvg(arr),
     min: minNum,
     max: maxNum,
-    length: length
+    length: arrLength
   }
   return obj
 }
 
-module.exports = analyzeArray
+const arrProperties = analyzeArray([1, 2, 3])
+
+module.exports = arrProperties
